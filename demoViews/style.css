@@ -1,0 +1,37 @@
+div {
+    border-radius: 5px;
+    margin: 5px;
+     border: 1px solid black;
+     line-height: 80%;
+     padding: 2px;
+
+}
+.day p {
+    margin: 0px;
+}
+.lists{
+    width: 30%;
+    float: left;
+}
+.load-meal{
+    float: right;
+}
+ .active{
+    color: red;
+
+}
+
+
+.days{
+    width: 30%;
+    display: inline-block;
+
+
+}
+
+
+.meals{
+    width: 30%;
+    float: right;
+
+}
