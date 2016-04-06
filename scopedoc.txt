@@ -1,0 +1,339 @@
+Meal Planner
+Project #000001
+CLIENT NAME
+April 4th, 2016 / SOW Version #
+DOCUMENT OBJECTIVE
+The purpose of this document is to provide detailed documentation that clearly defines the work that The Company will perform, your requirements and specifications under which that work will be performed, and the deliverables you will receive within the scope of this project. By accepting this document you acknowledge your understanding and agreement to this scope of work. Any requirement, which falls outside the specifications in this document, will be considered “Out of Scope” and may require significant changes to the budget or timeline established for this project.
+This document supersedes the estimate and any other documentation provided regarding the work to be performed by The Company.
+Scope of Work Details
+This project is a meal planning application.  The user will be able to create meals in 3 categories, breakfast, lunch or dinner. Each meal will consist of a label, a description, a list of ingredients, and instructions. The label will be a short string for display purposes indicating the contents of the meal in broad terms. The description will be a large text field describing all the foods or dishes that go into the meal. The ingredients will be a large text field holding each of the ingredients, and quantity.  The Instructions will be a large text field containing instructions for how to prepare the meal.
+Breakfasts, Lunches and Dinners will be displayed on the right. Days will be a scrolling display in the center, a straight column view. The user will be able to scroll up and down through the past and the future. Default will center the current day in the middle of the screen.  The user will be able to select a breakfast, and or lunch, and or dinner on the right, and a day in the center to target. Once a user has selected a meal on the right column, buttons become active in the visible day slots to populate each days breakfast, lunch or dinner with the selected meals.  Once a meal is populated into a day, the user may select who is cooking each meal from a single line select that lists all the cooks.
+
+On the left is a display of shopping lists. The user can create a new shopping list and select a day or days. Selected days are shown with a blue border. Once at least one shopping list in the future exists, the user can select that list, and start selecting meal days that are in the future, that have at least one slot filled with meals. Once a day with at least one meal is selected, the user can click a button in the list to populate the list with the selected days.. This will populate the list with the labels for the meals on the right, and the dates, and a list of ingredients and quantities in alaphabetical order by ingredient. Once a day has been added to a list, it’s background color changes to show that it’s items have been added to a list.
+COMPONENT
+page layout mockup
+
+http://framebox.org/xlIJ
+COMPONENT
+Authentication
+
+Authentication will be simple, exactly one role (user), login page will have a username and password text box, a login button,  and a link for “register”. When “login” is clicked, the app will check for valid user name and password. If no user found, or invalid password, login page is reloaded with a message that says “Invalid user name or password, please try again”.
+
+Register is a simple form, with fields for username, password, email address (for future password recovery or verification), and display name (what will be displayed to indicate which user is logged in.), and a “register” button. When the register button is clicked, the app will check if all the required fields were entered. If yes, redirect to login page, if not, “the following fields are required” on this page.
+COMPONENT
+Page Layout
+
+3 columns. On the right, a column of meals. Top: breakfasts. Center: lunches. Bottom: dinners.
+
+Center: a scrolling feed of days, defaulting to the current day being active.
+
+Left: shopping lists, with the next future shopping list being active.
+
+COMPONENT
+Meals column. This is the right most column of the page. This is broken down into 3 meal displays, breakfasts, lunches and dinners.
+SUB-SECTION
+Breakfasts:  A div displaying existing breakfast choices. Each breakfast has a short label, a longer description of all the dishes that make up this meal, a text box containing ingredients, and a text box for instructions on preparing the meal.
+SUB-SECTION
+Lunches:  A div displaying existing lunch choices. Each breakfast has a short label, a longer description of all the dishes that make up this meal, a text box containing ingredients, and a text box for instructions on preparing the meal.
+SUB-SECTION
+Dinners:  A div displaying existing dinner choices. Each breakfast has a short label, a longer description of all the dishes that make up this meal, a text box containing ingredients, and a text box for instructions on preparing the meal.
+
+COMPONENT
+Scrolling display of days. This is the center column of the page. This is a columnar display of days. The user can scroll up and down in time, viewing past or future days. The default display is today. There is a “today” button at the top of the column that resets the display to today.
+
+SUB-SECTION
+Meal Day: Each day shows the following information: Date: Day month date (year??). Example: Saturday, may 14th (‘16?)
+Under the date info are 3 slots, one each for breakfast, lunch and dinner. Each of these shows the label for the meal that was populated into that slot, and is empty if no meal has yet been selected. Each slot has a button to move a selected meal into that slot. Users can overwrite the existing meal in the slot by selecting a different meal and clicking this button. There is a select that lets the user choose the meal provide(cook)r. Meal providers are users who are cooks, or other providers, such as school lunch, out to eat at a restaurant, or someone ordering food for the kids. I don’t know how to word that. Each meal’s provider select is red until a provider is selected. Only meals with cooks will populate foods into the shopping list when that day is selected.
+
+COMPONENT
+Column of shopping lists.
+
+SUB-SECTION
+The user can click a “new shopping list” button at the top of the column. This  creates a new shopping list. The user has to pick a date for shopping. Perhaps there is a default of the following saturday?  This date is shown in the same format as the meal dates in the center, i.e. “Saturday, May 21st (‘16 for year?)
+Once a date is selected, this list is a valid target to be populated by meals from the center column. Once at least one meal day in the center is selected, the user can click a button inside the shopping list to “move selected days into this list” Clicking this will put the ingredients for all the meals of that day into a shopping list.
+Each shopping list will show the shopping date. Below that will be a list of the dates for meal days included in this list. Under each included date will be the label for each meal. At the bottom will be a list of the ingredients, with quantitiy first, in alpha order. This will look like:
+
+Shopping List Column:
+
+Shopping Day: Sunday 21 Mar
+meals:
+Toast eggs and fruit         Monday 22 mar
+ham sandwiches and chips Monday 22 mar
+Lasagna               Monday 22 mar
+Toast eggs and fruit         Tuesday 23 mar
+ingredients:
+12 eggs
+12 eggs
+4 slices wheat bread
+4 slices wheat bread
+12 slices wheat bread
+12 eggs
+12 eggs
+4 apples
+4 bananas
+1 pound ham
+2 pounds ricotta
+4 pounds mozzarella
+COMPONENT
+Data Structure - objects
+User
+Meal
+Day
+Shopping List
+SUB-SECTION: User
+id
+user name
+password
+display name
+email address
+SUB-SECTION: Meal
+id
+meal type: breakfast, lunch, dinner
+label: short for display
+dishes: all the dishes that make up this meal
+ingredients: EITHER  a big text box where the user puts the ingredients and quantities on each line,
+OR table of ingredients that auto fills as they start typing, and fills in.
+instructions: big text area with cooking instructions
+
+SUB-SECTION: Day
+id
+date
+breakfast cook
+breakfast meal
+lunch cook
+lunch meal
+dinner cook
+dinner meal
+note: any notes regarding meal prep for this day
+
+SUB-SECTION: Shopping List
+id
+shopping date
+Days included
+Meals for each included Day, i.e. Labels
+Quantities and Ingredients, alpha by ingredient
+
+
+
+
+
+
+
+
+
+
+
+
+Deployment Plan
+Fill in ALL available information in the following list. Be as specific as possible.
+detail of technology required for the application on the host machine
+what versions of your frameworks are you targeting and are expected on the server (eg, apache version, php version, mysql version)
+who is deploying?
+who is configuring the hosting environment?
+test-deployment schedule (include in timeline below as well)
+QA of deployment –  verify that a staging environment will be available on the hosting environment. If it will not be, clarify in this section that the client is responsible for all QA on the hosting environment
+deployment approval – define who the approver is
+Backup solution
+Version control
+Project MILESTONES
+If approval of this Scope of Work (v.#) is received by The Company no later than 10/21/15 @ 3:00 p.m. CST, development shall become effective on 12/31/15, and the following deadlines will become effective.  Changes, if necessary, will be reported by the SPM via email to [CLIENT CONTACT NAME]. CLIENT NAME acknowledges and agrees that CLIENT NAME’S failure to adhere to deadlines (including, but not limited to: Scope, expenses, and asset approval; providing sufficient assets; responding to communication from The Company) will impact The Company’s deadlines and estimated cost and, in such instances, The Company will not be responsible for missed deadlines, including final delivery/deployment, and increased costs and expenses.
+SPM: The milestones below are examples. Your project may have different milestones.
+
+Scope of Work Approved
+CLIENT NAME
+XX/XX/XX
+Approved PSDs delivered
+CLIENT NAME
+XX/XX/XX
+Component 1
+
+
+
+
+Component 2
+
+
+
+
+…
+
+
+
+
+…
+
+
+
+
+Test Deployment
+CLIENT NAME & Company
+XX/XX/XX
+QA Review Begins
+CLIENT NAME & Company
+XX/XX/XX
+QA Review Complete
+CLIENT NAME & Company
+XX/XX/XX
+QA Issues Resolved
+CLIENT NAME & Company
+XX/XX/XX
+QA Issues Verified as Resolved
+CLIENT NAME & Company
+XX/XX/XX
+Deployment
+Company
+XX/XX/XX
+
+QA Testing
+The Company will perform QA testing on the documented features and functions of the project prior to its deployment. Our QA process starts with determining which inputs/actions cause deviation from desired behavior by starting with good/expected values and actions, progressing through reasonable but invalid inputs, and ending with extreme and invalid values. The overall aesthetic and large-scale attributes of a project are also scrutinized, including general usability, performance, and security.
+QA Corrections
+Errors and omissions found during QA testing are documented and assigned to developers for repair. Once a defect has been fixed, it is retested, marked as resolved, and is closed in the ticket tracking system. When all known defects have been closed, the project is ready for deployment.
+Due to the timeline and complexity of the application, the below items MUST be followed:
+Only key contacts at CLIENT NAME will be allowed to create tickets.
+Only key contacts at the Company will assign tickets.
+[SPM NAME] and [LEAD DEVELOPER NAME] are the key contacts at The Company.
+[CLIENT CONTACT NAME] is the main contact for CLIENT NAME.
+All tickets must be entered into the ticket tracking system no later 11:59 p.m. CST of the due date.
+Enhancements, defects, or issues provided to Company contacts via email or telephone calls will not be addressed.
+All entries entered after 11:59 p.m. CST will not be addressed within the feedback cycle assigned to the next review cycle.
+CLIENT NAME will provide supporting content for anything entered into the ticket tracking system, such as screen shots that highlight reported ticket tracking system item.
+If we feel that we require further information, we will make notes for that particular ticket and notify CLIENT NAME of the required action.
+All tickets will be reviewed before assigning to appropriate development team member.
+We reserve the right to place feature requests into client wait and will not address until further discussion between main ticket tracking system contacts.
+Upon development completion of assigned tickets, we will assign back to CLIENT NAME contacts for approval.
+CLIENT NAME contacts are to verify that the reported item has been completed.
+It is the responsibility of CLIENT NAME to assign the tracking system tickets to the appropriate parties for review.
+CLIENT NAME will be responsible for closing all tracking system tickets they have submitted upon their change to “In_QA”.
+Supported Browsers & Devices
+Browsers
+Application will fully support only the below listed browsers and QA will test only in the following browsers and versions. All browsers or versions not listed below are considered out of scope.
+
+BROWSER NAME
+VERSION
+TYPE
+SUPPORT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Full support is defined as “All scoped and designed features will function as defined”
+Progressive support is defined as “The product will be compatible with this browser, but certain features based on the browser's limitations may not be fully functional. Unless covered by the scope, the site/app will also not be pixel perfect to the original designs.”
+Supported browsers are assumed to be the versions listed without any add-ons, plug ins, or customizations.
+Chrome and Firefox browsers update on release channels frequently and automatically. Versions to be tested will be at the time of writing of this scope of work. Defects or functionality changes introduced due to updates to these browsers during the development of this project may not be tested or supported, and may require a scope change to address.
+
+Devices
+Application will fully support only the below listed devices and QA will test only in the following devices and operating systems.  All devices and operating systems not listed below are considered out of scope.
+
+MANUFACTURER
+DEVICE NAME
+OS VERSION
+SUPPORT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Full support is defined as “All scoped and designed features will function as defined”
+Supported devices and operating systems are assumed to be the versions listed without any add-ons, plug ins, or customizations.
+Native applications are tested on the hardware and OS listed. Mobile optimized sites are tested on the default, unmodified browser for the OS listed.
+Assumptions
+In the process of developing this estimate, the following assumptions were made:
+SPM: Make sure that all assumptions and limitations from the original estimate are copy/pasted into the scope
+SPM: Remove assumptions for each section that do not apply to your project. These are intended to cover MOST projects but can be removed or modified based on your project’s needs.
+
+Artwork & Provided Files
+CLIENT NAME will provide all creative assets. The Company reserves the right to re-estimate our effort if these assets exceed our expectations.
+It is assumed that CLIENT NAME will provide comprehensive JPGs or a PDF to demonstrate every unique design that may be implemented.
+The final high quality artwork will be provided as a layered Adobe Photoshop PSD file with its Color Mode set to RGB. This file must use layer comps instead of multiple Adobe Photoshop PSD files to manage the various final layered designs.
+All art must be delivered using Photoshop's default "North American Web/Internet" Color Settings. The RGB Working Space must be "sRGB IEC61966-2.1". The RGB Color Management Policy must be set to Convert to Working RGB. Failure to deliver PSDs without these color settings will result in inaccurate colors. The effort to resolve inaccurate color settings or rework implemented colors is outside the scope of work and will be billed on a time and materials basis.
+Design & Content
+The Company will not create or implement content for the website.
+Potential iterations or changes to workflows and designs during the development process are not included in the project cost. Iterations or modifications to the design will result in additional costs and will exceed the project timeline.
+The Company will develop the fixed width web interface for a target screen resolution of 1024 x 768 unless otherwise directed.
+Technology Requirements
+All Flash development will target the current stable release of Flash or later. (as of date of approval of this scope)
+Flash must be installed by users of the application.
+All QA testing will be done against the current stable version of Flash only.
+The Company will develop the fixed width web interface for a target screen resolution of 1024 x 768 unless otherwise directed.
+The Company will develop the web site to be compatible only with the browsers listed in the table above. Compatibility with other legacy or beta web browsers is not included as part of this project.
+The website will not be optimized specifically for mobile phones, mobile browsers or mobile devices of any kind such as iPhones, iPad, Android, Blackberry and Windows Phone operating systems.
+Interactions with Third Parties
+Any software license costs are the responsibility of CLIENT NAME.
+Interactions with third party APIs assume that the API will not change during development and that the Terms of Service for the API allow the intended interaction.
+The development timeline assumes all APIs are available and working during the development period. If APIs are unavailable the project timeline and effort will increase.
+Deployment
+CLIENT NAME agrees that the project will not launch two days before a weekend or holiday.
+The Company assumes no responsibility for the success, failure or profitability of the workflows, methods, or business strategies created by CLIENT NAME
