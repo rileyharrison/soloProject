@@ -16,9 +16,25 @@ div {
 .load-meal{
     float: right;
 }
+.list-day{
+    float: right;
+}
  .active{
     color: red;
 
+}
+.day-listed{
+    background-color:   #99e699;
+
+}
+.day-select{
+    border: 3px solid blue;
+
+}
+.meal-pick{
+    overflow-y: scroll;
+    overflow: -moz-scrollbars-vertical;
+   overflow: scroll;
 }
 
 
